@@ -12,3 +12,9 @@ dist
 
 # idea
 .idea
+
+# db
+./db/config.js
+
+# certificate
+./certificate
