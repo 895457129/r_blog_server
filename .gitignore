@@ -14,7 +14,7 @@ dist
 .idea
 
 # db
-./db/config.js
+db/config.js
 
 # certificate
-./certificate
+certificate
