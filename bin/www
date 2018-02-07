@@ -6,20 +6,23 @@
 
 var app = require('../app');
 var debug = require('debug')('tagserver:server');
-var http = require('http');
-
+var https = require('https');
+var fs= require('fs');
+var privateKey  = fs.readFileSync(path.join(__dirname, './certificate/214310834860532.key'), 'utf8');
+var certificate = fs.readFileSync(path.join(__dirname, './certificate/214310834860532.pem'), 'utf8');
+var options = {key: privateKey, cert: certificate};
 /**
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '8085');
+var port = normalizePort(process.env.PORT || '443');
 app.set('port', port);
 
 /**
  * Create HTTP server.
  */
 
-var server = http.createServer(app);
+var server = https.createServer(options, app);
 
 /**
  * Listen on provided port, on all network interfaces.
